@@ -1,0 +1,209 @@
+\begin{defbox}{Topology}
+Let $X$ be a set, with $x \in X$ representing elements or points in $X$. Let $\mathcal{K}$ be a collection of subsets of $X$, satisfying the following properties:
+\begin{enumerate}
+    \item $\emptyset, X \in \mathcal{K}$,
+    \item The intersection of any finite number of sets in $\mathcal{K}$ is also in $\mathcal{K}$,
+    \item The union of any collection of sets in $\mathcal{K}$ is also in $\mathcal{K}$.
+\end{enumerate}
+If these conditions are satisfied, $\mathcal{K}$ defines a \textit{topology} on $X$, and the pair $(X, \mathcal{K})$ is called a \textit{topological space}.
+\end{defbox}
+
+A topology provides a framework to study the structure of sets and their properties in an abstract way.
+Now, let us consider some additional terms and their implications:
+
+\begin{defbox}{Open and Closed Sets}
+    In a topological space $(X, \mathcal{K})$:
+\begin{itemize}
+    \item The sets in $\mathcal{K}$ are called \textit{open sets}.
+    \item A subset $B \subseteq X$ is \textit{closed} if $X \setminus B$ (the complement of $B$ in $X$) is an open set.
+\end{itemize}
+\end{defbox} 
+
+
+\begin{exbox}{Topology}
+To illustrate these concepts, let us consider two examples:
+\begin{enumerate}
+    \item \textbf{Trivial Topology:} On any set $X$, the collection $\mathcal{K} = \{ \emptyset, X \}$ forms a topology. The corresponding topological space $(X, \mathcal{K})$ is called the \textit{trivial topology}.
+    \item \textbf{Discrete Topology:} For any set $X$, let $\mathcal{K} = 2^X$ (the power set of $X$, i.e., the collection of all subsets of $X$). The resulting topological space $(X, \mathcal{K})$ is called the \textit{discrete topology}, where every subset of $X$ is both open and closed.
+\end{enumerate}
+\end{exbox}
+
+\subsection{Standard Topology on $\mathbb{R}^n$}
+
+
+\begin{defbox}{Open Sets in $\mathbb{R}^n$}
+Define a collection of subsets of $\mathbb{R}^n$ as:
+\[
+\mathcal{B}_0 = \left\{ \prod_{i=1}^n (a_i, b_i) \;\middle|\; (a_i, b_i) \subset \mathbb{R}, \; a_i, b_i \in \mathbb{R}, \; i = 1, \dots, n \right\}.
+\]
+Here, each $(a_i, b_i)$ is an open interval in $\mathbb{R}$.
+\end{defbox}
+Using this definition on $\mathbb{R}^2$, this becomes:
+\[
+\mathcal{B}_0 = \{ (a_1, b_1) \times (a_2, b_2) \mid a_i, b_i \in \mathbb{R}, \; i = 1, 2 \}.
+\]
+\subsubsection{Constructing the Topology}
+So, first problem we can see is that $\mathcal{B}_0$ is not topology. To fix that, we can construct it in different way:
+\begin{enumerate}
+    \item \textbf{Finite Intersections:}
+    Construct $\mathcal{F}_1$ by including all finite intersections of sets in $\mathcal{B}_0$:
+    \[
+    \mathcal{F}_1 = \mathcal{B}_0 \cup \bigcap_{i=1}^k A_i, \quad A_i \in \mathcal{B}_0.
+    \]
+    The collection $\mathcal{F}_1$ is stable under finite intersections.
+
+    \item \textbf{Arbitrary Unions:}
+    Extend $\mathcal{F}_1$ to include arbitrary unions of sets. Let:
+    \[
+    \mathcal{F}_2 = \mathcal{F}_1 \cup \bigcup_{A_i \in \mathcal{F}_1} A_i.
+    \]
+    The collection $\mathcal{F}_2$ is stable under both finite intersections and arbitrary unions.
+\end{enumerate}
+
+Thus, $\mathcal{F}_2$ defines a topology on $\mathbb{R}^n$. The topological space $(\mathbb{R}^n, \mathcal{F}_2)$ is called the \textit{standard topology} on $\mathbb{R}^n$. However, for the sake of clear notation, $\Phi^*$ is the standard topology.
+
+\subsection{Topology on a Finite Set}
+
+Let $X = \{ a, b \}$. Define:
+\[
+\mathcal{K} = \{ \emptyset, \{ a \}, \{ b \}, \{ a, b \} \}.
+\]
+The pair $(X, \mathcal{K})$ is a topological space. Observe:
+\begin{itemize}
+    \item $\{ b \}$ is a closed set.
+    \item $\{ a \}$ is an open set but not closed.
+\end{itemize}
+We will revisit this example later.
+\subsection{Separation Properties in Topological Spaces}
+\begin{defbox}{Hausdorff Space}
+A topological space $(X, \mathcal{K})$ is called \textit{Hausdorff} if, for any two distinct points $x, y \in X$, there exist disjoint open sets $A, B \in \mathcal{K}$ such that:
+\[
+    x \in A \quad \text{and} \quad y \in B, \quad \text{with} \quad A \cap B = \emptyset.
+\]
+\end{defbox}
+This property ensures that distinct points can be "separated" by open neighborhoods.
+
+\begin{defbox}{Normal Space}
+A topological space $(X, \mathcal{K})$ is called \textit{normal} if, for any two disjoint closed sets $E$ and $F$, there exist disjoint open sets $A, B \in \mathcal{K}$ such that:
+\[
+    E \subseteq A, \quad F \subseteq B, \quad \text{and} \quad A \cap B = \emptyset.
+\]
+\end{defbox}
+This property extends the concept of separation to closed sets. Looking back at our previous example,
+
+\begin{enumerate}
+    \item \textbf{Standard Topology on $\mathbb{R}^n$:}
+    \begin{itemize}
+        \item With the standard topology, $\mathbb{R}^n$ is both Hausdorff and normal.
+        \item For any two disjoint closed intervals, such as $E = (-\infty, 3]$ and $F = [5, \infty)$, disjoint open sets can be constructed to separate them.
+    \end{itemize}
+
+    \item \textbf{Topology on a Finite Set:}
+    \begin{itemize}
+        \item Let $X = \{ a, b \}$ and $\mathcal{K} = \{ \emptyset, \{ a \}, \{ b \}, \{ a, b \} \}$.
+        \item \textbf{Question:} Is $(X, \mathcal{K})$ Hausdorff? \textbf{Answer:} No, $X$ is not Hausdorff since $a$ and $b$ cannot be separated by disjoint open sets.
+        \item \textbf{Question:} Is $(X, \mathcal{K})$ normal? \textbf{Answer:} No, $X$ is not normal for the same reason.
+    \end{itemize}
+\end{enumerate}
+\subsection{Neighborhood}
+\begin{defbox}{Neighborhood}
+A \textit{neighborhood} of a set $B \subseteq X$ in a topological space is any open set $A$ such that $B \subseteq A$.
+\end{defbox}
+\begin{exbox}{Neighborhood}
+
+Let $B = (1, 2) \cup (4, 5)$. Then $A = (-\infty, 0) \cup (3, \infty)$ is not a neighborhood of $B$ because $A$ does not contain $B$.
+
+\end{exbox}
+\begin{defbox}{Closure}
+The \textit{closure} of a set $B \subseteq X$, denoted $\overline{B}$, is the smallest closed set containing $B$:
+\[
+\overline{B} = \bigcap_{B \subseteq A, A \text{ closed}} A.
+\]
+This is the intersection of all closed sets containing $B$.
+\end{defbox}
+\begin{defbox}{Interior}
+The \textit{interior} of a set $B$, denoted $B^\circ$ or $\text{int}(B)$, is the largest open set contained in $B$:
+\[
+B^\circ = \bigcup_{A \subseteq B, A \text{ open}} A.
+\]
+\end{defbox}
+\begin{defbox}{Open Covering}
+An \textit{open covering} of a set $B \subseteq X$ is a collection of open sets $\{A_i\}_{i \in I}$ such that:
+\[
+B \subseteq \bigcup_{i \in I} A_i.
+\]
+\end{defbox}
+\begin{defbox}{Compactness}
+A set $B \subseteq X$ is called \textit{compact} if every open covering of $B$ contains a finite subcollection that also covers $B$.
+\end{defbox}
+\subsection{Convergence and Continuity}
+\subsubsection{Problem with Convergence}
+
+Recall that in real analysis, we have Heine-Borel theorem
+\begin{thmbox}{Heine-Borel}
+For  $S\subseteq \mathbb{R}^n$ then $S$ is compact iff $S$ is closed and bounded.
+\end{thmbox}
+However, says we have topological space $(\mathbb{R}^n,\Phi^*)$. What is "bounded" in this space sense? In real analysis, we can say that bounded then it must have limit to something but to have a limit you need convergence. Say we have a sequence of element in a topological space $\{x_i\}_{i\geq 1}$, can we say anything about it? What does it means to have $x_k \rightarrow x_0$ in this sense?
+\subsubsection{Convergence in Topological Space}
+\begin{defbox}{Convergence}
+    Let $(X, \mathcal{K})$ be a topological space. We say that a sequence $\{x_n\}_{n \geq 1} \subseteq X$ converges to a point $x_0 \in X$ if, for every open set $U \in \mathcal{K}$ containing $x_0$, there exists $N \in \mathbb{N}$ such that $x_n \in U$ for all $n \geq N$.
+
+\[
+\forall U \in \mathcal{K}, \, x_0 \in U \implies \exists N \in \mathbb{N} \text{ such that } x_n \in U \, \forall n \geq N.
+\]
+\end{defbox}
+\begin{exbox}{Convergence on Topology of Finite Set}
+    Consider the topological space $X = \{a, b\}$ with the topology $\mathcal{K} = \{\emptyset, \{a\}, \{a, b\}\}$. 
+
+\begin{itemize}
+    \item The sequence $\{a, b, a, b, \dots\}$ converges to $b$ (by definition).
+
+    Here, we want to see whether it will converge to $b$, we first can notice that the only open subset in the topology containing $b$ is $\{a,b\}$. Now, the question is will it eventually lie in that set? Answer is obviously.
+    \item The constant sequence $\{a, a, a, \dots\}$ converges to $a$, and also to $b$.
+    
+    Let's consider the first case: $a$. So, there are two open sets $\{a\}, \{a,b\}$. The sequence will eventually be $a$ which is in both sets. By definition, this converges to $a$. In the second case, there is only one open set in the topology that contains $b$ which is $\{a,b\}$. This sequence will end with $a$ which is in that set, hence it is converging to $b$.
+\end{itemize}
+Note that convergence in topological space might not be unique.
+\end{exbox}
+\begin{thmbox}{Uniqueness of Limits in Hausdorff Spaces}
+If $X$ is a Hausdorff space, then every convergent sequence in $X$ has a unique limit.
+\end{thmbox}
+\begin{proof}
+    Suppose there exist $\{x_n\}_{n\geq 1}$ that does not converge to unique limit; say converges to $x$ and $y$ ($x\neq y$) and let $X$ be Hausdorff.
+    
+    Using the fact that $X$ is Hausdorff, we can say that there exists the open and disjoint set $U$ and $V$ in the topology of $X$ such that $x\in U$ and $y\in V$.
+
+    Then since $x_n \rightarrow x$ and $x_n\rightarrow y$ then there exists $N_1\in\mathbb{N}$ such that $x_{p} \in U,\; p > N_1$. Likewise, there also exists $N_2 \in \mathbb{N}$ such that $x_{q} \in V, q > N_2$.
+
+    However, since $X$ is Hausdorff, this is impossible as $U$ and $V$ are disjoint. Hence, our hypothesis is false. That means, if $X$ is Hausdorff, convergent sequence can only have unique limit
+\end{proof} 
+\subsubsection{Continuity}
+\begin{defbox}{Continuous Function}
+    Let $f : X \to Y$ be a function between topological spaces. We say that $f$ is \textit{continuous} if, for any open set $U \subseteq Y$, the preimage $f^{-1}(U)$ is open in $X$. That is,
+    \[
+f \text{ is continuous} \iff \forall U \subseteq Y, \, U \text{ open} \implies f^{-1}(U) \text{ is open in } X.
+\]
+\end{defbox}
+From this definition, we can see that the following theorem comes natural with it
+\begin{thmbox}{Convergence under Continuous Function in Topological Space}
+    Suppose $f: X \rightarrow Y$ be a continuous function between topological spaces. Let $\{x_n\}_{n\geq 1}$ be a sequence from $X$ such that it converges to $x$. Then,
+    \[
+    x_n \rightarrow x \implies f(x_n) \rightarrow f(x)
+    \]
+\end{thmbox}
+\begin{proof}
+    Assume $f:X\rightarrow Y$ is continuous and assume $x_n \rightarrow x\in X$. We need to show that $f(x_n)\rightarrow f(x)$. 
+
+    Let $U$ be an open set in $Y$ that contains $f(x)$. Since $f$ is continuous,
+    \[
+    f(x)\in U \iff x \in f^{-1}(U) \text{ is open in }X
+    \]
+    Then, there exists $N_0\in\mathbb{N}$ such that for all $n > N_0$,
+    \[
+    x_n \in f^{-1}(U) \iff f(x_n) \in U
+    \]
+    Therefore,
+    \[
+    x_n \rightarrow x \implies f(x_n) \rightarrow f(x)
+    \]
+\end{proof}
