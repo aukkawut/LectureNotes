@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper]{article}
+
+% Essential packages
+\usepackage[utf8]{inputenc}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+
+% Use sans-serif fonts throughout
+%\usepackage[sfdefault]{sourcesanspro}  % Source Sans Pro as main font
+%\usepackage{sfmath}  % Sans serif math font
+
+% Colors for various boxes
+\usepackage{xcolor}
+\definecolor{defcolor}{RGB}{70,130,180}
+\definecolor{thmcolor}{RGB}{95,158,160}
+\definecolor{excolor}{RGB}{107,142,35}
+\newcounter{sharedcounter}[subsection]
+\renewcommand{\thesharedcounter}{\thesection.\thesubsection.\arabic{sharedcounter}}
+
+% Example box
+\newtcolorbox[use counter=sharedcounter, number within=subsection]{exbox}[2][]{%
+  colback=excolor!10,
+  colframe=excolor!60,
+  arc=0mm,
+  boxrule=1pt,
+  title={Example~\thesharedcounter: #2}, % Include the title here
+  fonttitle=\bfseries,
+  #1 % Additional options passed when the box is used
+}
+
+% Definition box
+\newtcolorbox[use counter=sharedcounter, number within=subsection]{defbox}[2][]{%
+  colback=defcolor!10,
+  colframe=defcolor!60,
+  arc=0mm,
+  boxrule=1pt,
+  title={Definition~\thesharedcounter: #2}, % Include the title here
+  fonttitle=\bfseries,
+  #1 % Additional options passed when the box is used
+}
+
+% Theorem box
+\newtcolorbox[use counter=sharedcounter, number within=subsection]{thmbox}[2][]{%
+  colback=thmcolor!10,
+  colframe=thmcolor!60,
+  arc=0mm,
+  boxrule=1pt,
+  title={Theorem~\thesharedcounter: #2}, % Include the title here
+  fonttitle=\bfseries,
+  #1 % Additional options passed when the box is used
+}
+
+% Header and footer setup
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lecture Notes}
+\lhead{BZAN 610 Probability and Stochastic Processes}
+\rfoot{Page \thepage}
+
+% Document info
+\title{\textbf{BZAN 610 Probability and Stochastic Processes}\\
+\large{Lecture Note}}
+\author{Aukkawut Ammartayakun\\
+  \small University of Tennessee, Knoxville}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+
+% References section if needed
+%\section*{References}
+
+\end{document}
